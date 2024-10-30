@@ -1,0 +1,129 @@
+*{
+    margin: 0;
+    padding: 0;
+    -webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+body{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--main-color);
+}
+:root{
+    --main-block-width: 30vw;
+    --main-block-height: 50%;
+    --main-color: #e7e7e7;
+}
+
+.start_block{
+    top: calc(100vh / 2 - var(--main-block-height) / 2);
+    left: calc(100vw / 2 - var(--main-block-width) / 2);
+    background-color: var(--main-color);
+    position: inherit;
+    border-radius: 25px;
+    box-shadow: -10px -10px 35px 0 rgba(255, 255, 255, 1), 10px 10px 30px 0 #aeaec0, inset -10px -10px 10px 0 rgba(0, 0, 0, .25), inset 10px 10px 10px 0 rgba(255, 255, 255, .8);
+    gap: 20px;
+}
+.start_block_size{
+    width: var(--main-block-width);
+    height: var(--main-block-height);
+}
+
+.game_block_size{
+    width: var(--main-block-width);
+}
+
+.button_style{
+    background-color: var(--main-color);
+    border-radius: 15px;
+    box-shadow: -10px -10px 30px 0 #ffffff, 10px 10px 30px 0 #aeaec0;
+    transition: all .1s ease-in-out;
+    text-decoration: none;
+    outline: none;
+    border: none;
+}
+.button_style:active{
+    box-shadow: inset -10px -10px 25px 0 rgba(255, 255, 255, .9), inset 10px 10px 25px 0 rgba(174, 174, 192, .8);
+}
+.menu_button_size{
+    width: 70%;
+}
+
+.keyboard_btn{
+    text-align: center;
+    height: 6vmin;
+    width: 4vmin;
+    line-height: 6vmin;
+    box-shadow: -5px -5px 15px 0 #ffffff, 5px 5px 15px 0 #aeaec0;
+}
+.keyboard_btn:active{
+    box-shadow: inset -5px -5px 12px 0 rgba(255, 255, 255, .9), inset 5px 5px 12px 0 rgba(174, 174, 192, .8);
+}
+.keyboard_btn_del{
+    height: 6vmin;
+    line-height: 6vmin;
+    box-shadow: -5px -5px 15px 0 #ffffff, 5px 5px 15px 0 #aeaec0;
+}
+.keyboard_btn_del:active{
+    box-shadow: inset -5px -5px 12px 0 rgba(255, 255, 255, .9), inset 5px 5px 12px 0 rgba(174, 174, 192, .8);
+}
+
+.letter{
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: inset -10px -10px 25px 0 rgba(255, 255, 255, .9), inset 10px 10px 25px 0 rgba(174, 174, 192, .8);
+    font-weight: 600;
+}
+
+.letter_size{
+    width: 7vmin;
+    height: 9vmin;
+    line-height: 9vmin;
+    font-size: 6vmin;
+}
+
+.grd{
+    margin: 1vmin;
+}
+#grid{
+    margin-top: 3vmin;
+    margin-bottom: 3vmin;
+}
+
+.keyboard{
+    width: calc(var(--main-block-width)+10vmin);
+}
+.line_keys{
+    margin-bottom: 10px;
+}
+
+@media screen and (orientation:portrait) {
+    :root {
+        --main-block-width: 85vw;
+    }
+    .letter_size{
+        width: 12vmin;
+        height: 16vmin;
+        line-height: 16vmin;
+        font-size: 13vmin;
+    }
+    .keyboard_btn{
+        text-align: center;
+        height: 12vmin;
+        line-height: 12vmin;
+        width: 6vmin;
+    }
+    .keyboard_btn_del{
+        text-align: center;
+        height: 12vmin;
+        line-height: 12vmin;
+    }
+    .keyboard{
+        width: 100vw;
+        max-width: 100vw;
+    }
+}

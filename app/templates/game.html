@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="d-flex justify-content-center align-items-center flex-column" style="height: 100vh; max-width: 100vw; gap: 20px;">
+    <div class="start_block game_block_size d-flex flex-column justify-content-between align-items-center">
+        <div class="d-flex align-items-center justify-content-center flex-column" id="grid"></div>
+    </div>
+    <div class="keyboard container align-items-center">
+        <div class="line_keys gap-2 row align-items-center justify-content-center">
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">Й</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">Ц</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">У</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">К</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">Е</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">Н</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">Г</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">Ш</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">Щ</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">З</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">Х</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">Ъ</div></div>
+        </div>
+        <div class="line_keys gap-2 row align-items-center justify-content-center">
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">Ф</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">Ы</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">В</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">А</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">П</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">Р</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">О</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">Л</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">Д</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">Ж</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">Э</div></div>
+        </div>
+        <div class="line_keys gap-2 row align-items-center justify-content-center">
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">Я</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">Ч</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">С</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">М</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">И</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">Т</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">Ь</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">Б</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn">Ю</div></div>
+            <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn_del">=Стереть=</div></div>
+        </div>
+        <div class="line_keys gap-2 row align-items-center justify-content-center">
+            <div class="col d-flex justify-content-center" style="padding: 0;"><button class="btn button_style" style="width: 90%;">Проверить слово</button></div>
+        </div>
+    </div>
+</div>
+<script>
+    let grid = document.getElementById('grid')
+    let num = {{ letters }}
+    let content = ''
+    for(let i = 0; i < num; i++){
+        content += '<div class="letter letter_size grd"></div>'
+    }
+    // console.log(content, num)
+    for (let i = 0; i < num+1; i++){
+        grid.insertAdjacentHTML('afterbegin', `<div class="d-flex align-items-center justify-content-center">${content}</div>`)
+    }
+</script>
+{% endblock %}
