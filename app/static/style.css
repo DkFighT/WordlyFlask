@@ -17,6 +17,7 @@ body{
     --main-block-width: 30vw;
     --main-block-height: 50%;
     --main-color: #e7e7e7;
+    --attension-color: #940323
 }
 
 .start_block{
@@ -40,14 +41,14 @@ body{
 .button_style{
     background-color: var(--main-color);
     border-radius: 15px;
-    box-shadow: -10px -10px 30px 0 #ffffff, 10px 10px 30px 0 #aeaec0;
+    box-shadow: -5px -5px 15px 0 #ffffff, 5px 5px 15px 0 #aeaec0;
     transition: all .1s ease-in-out;
     text-decoration: none;
     outline: none;
     border: none;
 }
 .button_style:active{
-    box-shadow: inset -10px -10px 25px 0 rgba(255, 255, 255, .9), inset 10px 10px 25px 0 rgba(174, 174, 192, .8);
+    box-shadow: inset -5px -5px 12px 0 rgba(255, 255, 255, .9), inset 5px 5px 12px 0 rgba(174, 174, 192, .8);
 }
 .menu_button_size{
     width: 70%;
@@ -99,6 +100,25 @@ body{
 }
 .line_keys{
     margin-bottom: 10px;
+}
+
+.word_input{
+    width: 100%;
+    text-align: center;
+    outline: none;
+    border: none;
+    padding: 5px;
+    box-shadow: inset -5px -5px 12px 0 rgba(255, 255, 255, .9), inset 5px 5px 12px 0 rgba(174, 174, 192, .8);
+    border-radius: 15px;
+    background-color: var(--main-color);
+}
+.dialog_color{
+    background-color: var(--main-color);
+}
+.attension{
+    text-align: center;
+    color: var(--attension-color);
+    width: 100%;
 }
 
 @media screen and (orientation:portrait) {

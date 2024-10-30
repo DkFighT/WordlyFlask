@@ -3,6 +3,60 @@
 {% block body %}
     <div class="d-flex flex-column justify-content-center align-items-center start_block start_block_size">
         <button class="btn btn-lg button_style menu_button_size" onclick="window.location.href = '/game'">Начать игру</button>
-        <button class="btn btn-lg button_style menu_button_size">Загадать слово</button>
+        <button class="btn btn-lg button_style menu_button_size" onclick="showModal()">Загадать слово</button>
+
+
+        <div id="gfg" class="modal fade" tabindex="-1" data-bs-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content dialog_color">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal_title">
+                            Загадайте слово от 3 до 5 букв
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="modal_body">
+                        <form>
+                            <div class="mb-3">
+                              <input type="text" class="word_input" id="word" placeholder="Ваше слово" maxlength="5" minlength="3">
+                              <label class="attension" id="attension"></label>
+                            </div>
+                        </form>
+                        <button class="btn button_style" style="width: 100%" onclick="check_word()" id="create_word">Загадать слово</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+
+    <script>
+        let modal = new bootstrap.Modal(document.getElementById('gfg'));
+        let modal_body = document.getElementById('modal_body');
+        function showModal() {
+            if(!document.getElementById('create_word'))
+            {
+                modal_body.insertAdjacentHTML('beforeend', '<button class="btn button_style" style="width: 100%" onclick="check_word()" id="create_word">Загадать слово</button>');
+            }
+
+            document.getElementById('modal_title').textContent = 'Загадайте слово от 3 до 5 букв';
+            document.getElementById('word').value = ''
+            document.getElementById('attension').textContent = '';
+            modal.show();
+        }
+
+        function check_word(){
+            let wrd = document.getElementById('word');
+            if (wrd.value.length < 3 || wrd.value.length > 5){
+                document.getElementById('attension').textContent = 'Недостаточно букв в слове';
+            }
+            else{
+                document.getElementById('attension').textContent = '';
+                document.getElementById('modal_title').textContent = 'Поделиться словом с другом';
+                let elem = document.getElementById('create_word');
+                elem.parentNode.removeChild(elem);
+                // добавление новых кнопок для копирования содержания в буфер и отправки ссылки сразу
+            }
+        }
+    </script>
 {% endblock %}

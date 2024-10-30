@@ -9,7 +9,7 @@ def index():
 
 @app.route('/game')
 def game_screen():
-    return render_template('game.html', letters=5)
+    return render_template('game.html', letters=3)
 
 
 def main():
