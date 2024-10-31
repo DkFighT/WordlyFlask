@@ -49,6 +49,23 @@
             <div class="col d-flex justify-content-center" style="padding: 0;"><button class="btn button_style" style="width: 90%;" onclick="check_word()">Проверить слово</button></div>
         </div>
     </div>
+
+
+    <div id="gfg" class="modal fade" tabindex="-1" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content dialog_color">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal_title">
+                        Победа, победа вместо обеда!!
+                    </h5>
+                </div>
+                <div class="modal-body" id="modal_body">
+                    <button class="btn button_style" style="width: 100%" onclick="" id="create_word">Следующее слово</button>
+                    <button class="btn button_style" style="width: 100%" onclick="window.location.href = '/'" id="create_word">Главное меню</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script>
     let grid = document.getElementById('grid')
@@ -85,8 +102,12 @@
         let res = CryptoJS.AES.decrypt(str, "Secret Passphrase").toString(CryptoJS.enc.Utf8)
         return res
     }
-
-
+    let modal = new bootstrap.Modal(document.getElementById('gfg'));
+    let modal_body = document.getElementById('modal_body');
+    function showModal(){
+        modal.show();
+    }
+    
 
 
 
@@ -110,37 +131,42 @@
     }
     function check_word(){
         if (dict_word[current_level].length === 5 && current_level < main_word.length + 1){
-            let grid_letters = document.getElementsByClassName('letter')
-            let level_word = ''
+            var grid_letters = document.getElementsByClassName('letter')
+            var level_word = ''
             for (let i = 0; i < main_word.length; i++){
                 level_word += grid_letters[i + current_level * main_word.length].textContent
             }
-            if (main_word == level_word){
-                // end game победа
-
-                return;
+            if (main_word.toUpperCase() != level_word){
+                checker();
+                current_level += 1;
             }
             else{
-                for(let i = 0; i < main_word.length; i++){
-                    if (main_word.toUpperCase().indexOf(level_word[i]) == -1){
-                        change_key_color('#aaaaaa', level_word[i])
-                    }
-                    if (main_word.toUpperCase().indexOf(level_word[i]) >= 0){
-                        grid_letters[i + current_level * main_word.length].style.backgroundColor = '#f0d283';
-                        change_key_color('#f0d283', level_word[i])
-                    }
-                    if (level_word[i] == main_word[i].toUpperCase()){
-                        grid_letters[i + current_level * main_word.length].style.backgroundColor = '#588157';
-                        change_key_color('#588157', level_word[i])
-                    }
-                }
-                current_level += 1;
+                // end game выигрыш
+                checker();
+                showModal()
+                return;
             }
         }
         if (current_level > main_word.length){
             // end game проигрыш
-
+            showModal()
             return;
+        }
+
+        function checker(){
+            for(let i = 0; i < main_word.length; i++){
+                if (main_word.toUpperCase().indexOf(level_word[i]) == -1){
+                    change_key_color('#aaaaaa', level_word[i])
+                }
+                if (main_word.toUpperCase().indexOf(level_word[i]) >= 0){
+                    grid_letters[i + current_level * main_word.length].style.backgroundColor = '#f0d283';
+                    change_key_color('#f0d283', level_word[i])
+                }
+                if (level_word[i] == main_word[i].toUpperCase()){
+                    grid_letters[i + current_level * main_word.length].style.backgroundColor = '#588157';
+                    change_key_color('#588157', level_word[i])
+                }
+            }
         }
     }
 
