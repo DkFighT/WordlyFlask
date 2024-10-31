@@ -36,11 +36,13 @@
         function showModal() {
             if(!document.getElementById('create_word'))
             {
+                let elem = document.getElementById('copy_word');
+                elem.parentNode.removeChild(elem);
                 modal_body.insertAdjacentHTML('beforeend', '<button class="btn button_style" style="width: 100%" onclick="check_word()" id="create_word">Загадать слово</button>');
             }
 
             document.getElementById('modal_title').textContent = 'Загадайте слово от 3 до 5 букв';
-            document.getElementById('word').value = ''
+            document.getElementById('word').value = '';
             document.getElementById('attension').textContent = '';
             modal.show();
         }
@@ -55,8 +57,28 @@
                 document.getElementById('modal_title').textContent = 'Поделиться словом с другом';
                 let elem = document.getElementById('create_word');
                 elem.parentNode.removeChild(elem);
-                // добавление новых кнопок для копирования содержания в буфер и отправки ссылки сразу
+                wrd.value = window.location.href + '/game?word=' + encodeURI(encrypt(wrd.value))
+                modal_body.insertAdjacentHTML('beforeend', '<button class="btn button_style" style="width: 100%" onclick="copy_word()" id="copy_word"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16" style="color: black;"><path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"/></svg>    Копировать ссыклу</button>')
             }
+        }
+
+        function copy_word(){
+            let copy = document.getElementById('word');
+            copy.focus();
+            copy.select();
+            try {
+                var successful = document.execCommand('copy');
+                var msg = successful ? 'successful' : 'unsuccessful';
+                console.log('Copying text command was ' + msg);
+            } catch (err) {
+                console.log('Oops, unable to copy');
+            }
+        }
+
+        function encrypt(str){
+            return CryptoJS.AES.encrypt(str, "Secret Passphrase").toString();
         }
     </script>
 {% endblock %}
+
+
