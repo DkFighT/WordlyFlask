@@ -54,13 +54,15 @@
     <div id="gfg" class="modal fade" tabindex="-1" data-bs-backdrop="static">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content dialog_color">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modal_title">
+                <div class="modal-header d-flex justify-content-center" style="text-align: center;">
+                    <h5 class="modal-title" id="modal_title" style="text-align: center;">
                         Победа, победа вместо обеда!!
                     </h5>
                 </div>
                 <div class="modal-body" id="modal_body">
-                    <button class="btn button_style" style="width: 100%" onclick="" id="create_word">Следующее слово</button>
+                    <div class="stars d-flex align-items-center justify-content-center gap-2 mb-3"></div>
+                    <div class="story"></div>
+                    <button class="btn button_style mb-3" style="width: 100%" onclick="window.location.href = '/game'" id="create_word">Следующее слово</button>
                     <button class="btn button_style" style="width: 100%" onclick="window.location.href = '/'" id="create_word">Главное меню</button>
                 </div>
             </div>
@@ -130,7 +132,7 @@
         }
     }
     function check_word(){
-        if (dict_word[current_level].length === 5 && current_level < main_word.length + 1){
+        if (dict_word[current_level].length === main_word.length && current_level < main_word.length + 1){
             var grid_letters = document.getElementsByClassName('letter')
             var level_word = ''
             for (let i = 0; i < main_word.length; i++){
@@ -143,12 +145,15 @@
             else{
                 // end game выигрыш
                 checker();
-                showModal()
+                create_stars();
+                showModal();
                 return;
             }
         }
         if (current_level > main_word.length){
             // end game проигрыш
+            checker();
+            create_stars();
             showModal()
             return;
         }
@@ -166,6 +171,37 @@
                     grid_letters[i + current_level * main_word.length].style.backgroundColor = '#588157';
                     change_key_color('#588157', level_word[i])
                 }
+            }
+        }
+    }
+
+    function create_stars(){
+        let stars = document.getElementsByClassName('stars')
+        console.log(current_level / main_word.length)
+        if (current_level / main_word.length < 0.35){
+            // 3 stars
+            for (let i = 0; i < 3; i++){
+                stars[0].insertAdjacentHTML('beforeend', '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16" style="color: #f0d283;"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>')
+            }
+        }
+        if (current_level / main_word.length < 0.66 && current_level / main_word.length >= 0.34) {
+            // 2 stars
+            for (let i = 0; i < 2; i++){
+                stars[0].insertAdjacentHTML('beforeend', '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16" style="color: #f0d283;"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>')
+            }
+            stars[0].insertAdjacentHTML('beforeend', '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16"><path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/></svg>')
+        }
+        if (current_level / main_word.length > 0.65 && current_level / main_word.length <= 1){
+            // 1 star
+            stars[0].insertAdjacentHTML('beforeend', '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16" style="color: #f0d283;"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>')
+            for (let i = 0; i < 2; i++){
+                stars[0].insertAdjacentHTML('beforeend', '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16"><path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/></svg>')
+            }
+        }
+        if (current_level / main_word.length > 1){
+            // 0 stars
+            for (let i = 0; i < 3; i++){
+                stars[0].insertAdjacentHTML('beforeend', '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16"><path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/></svg>')
             }
         }
     }
