@@ -2,6 +2,11 @@ from flask import Flask, render_template, url_for, request, jsonify
 
 app = Flask(__name__)
 
+def get_word():
+    with open('/static/labels.txt', 'r') as f:
+        
+    return word
+
 
 @app.route('/')
 def index():
@@ -9,7 +14,7 @@ def index():
 
 @app.route('/game')
 def game_screen():
-    return render_template('game.html', secure_word='слово')
+    return render_template('game.html', secure_word=get_word())
 
 
 def main():
