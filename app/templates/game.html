@@ -61,7 +61,8 @@
                 </div>
                 <div class="modal-body" id="modal_body">
                     <div class="stars d-flex align-items-center justify-content-center gap-2 mb-3"></div>
-                    <div class="story"></div>
+                    <h5 class="correct_word modal-title mb-3" id="correct_word" style="text-align: center;"></h5>
+                    <div class="story container align-items-center mb-4" id="story"></div>
                     <button class="btn button_style mb-3" style="width: 100%" onclick="window.location.href = '/game'" id="create_word">Следующее слово</button>
                     <button class="btn button_style" style="width: 100%" onclick="window.location.href = '/'" id="create_word">Главное меню</button>
                 </div>
@@ -146,6 +147,7 @@
                 // end game выигрыш
                 checker();
                 create_stars();
+                create_story()
                 showModal();
                 return;
             }
@@ -154,11 +156,13 @@
             // end game проигрыш
             checker();
             create_stars();
+            create_story();
             showModal()
             return;
         }
 
         function checker(){
+            try{
             for(let i = 0; i < main_word.length; i++){
                 if (main_word.toUpperCase().indexOf(level_word[i]) == -1){
                     change_key_color('#aaaaaa', level_word[i])
@@ -172,6 +176,8 @@
                     change_key_color('#588157', level_word[i])
                 }
             }
+        }
+        catch{}
         }
     }
 
@@ -201,6 +207,30 @@
             // 0 stars
             for (let i = 0; i < 3; i++){
                 stars[0].insertAdjacentHTML('beforeend', '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16"><path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/></svg>')
+            }
+            document.getElementById('modal_title').innerHTML = 'Не повезло, попробуй еще! У тебя получится'
+        }
+        document.getElementById('correct_word').innerHTML = main_word;
+    }
+
+    function create_story(){
+        let story = document.getElementById('story');
+        let cont = ''
+        for(let i = 0; i < main_word.length; i++){
+            cont += '<div class="col-1 d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell"> </div></div>'
+        }
+        for (let i = 0; i < main_word.length+1; i++){
+            story.insertAdjacentHTML('beforeend', `<div class="line_keys gap-2 row align-items-center justify-content-center">${cont}</div>`)
+        }
+        let story_cells = document.getElementsByClassName('story_cell')
+        for(let i = 0; i < main_word.length+1; i++){
+            for(let j = 0; j < main_word.length; j++){
+                if (main_word.toUpperCase().indexOf(dict_word[i][j]) >= 0){
+                    story_cells[j + i * main_word.length].style.backgroundColor = '#f0d283';
+                }
+                if (dict_word[i][j] == main_word[j].toUpperCase()){
+                    story_cells[j + i * main_word.length].style.backgroundColor = '#588157';
+                }
             }
         }
     }
