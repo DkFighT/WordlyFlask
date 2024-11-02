@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="d-flex justify-content-center align-items-center flex-column" style="height: 100vh; max-width: 100vw; gap: 20px;">
+        <h4><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-question-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+            <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94"/>
+          </svg> Правила</h4>
+        <div class="start_block game_block_size d-flex flex-column justify-content-between align-items-center">
+            
+            <input type="radio" id="s-1" name="slider-control" checked="checked">
+            <input type="radio" id="s-2" name="slider-control">
+            <input type="radio" id="s-3" name="slider-control">
+            <div class="js-slider">
+                <figure class="js-slider_item img-1">
+                    <figcaption class="wo-caption mb-3 mt-3" style="text-align: center;">
+                        Введите любое слово и нажмите "Проверить слово"
+                    </figcaption>
+                    <div class="js-slider_img">
+                        <div class="d-flex align-items-center justify-content-center flex-column" id="grid">                
+                            <div class="line_keys gap-2 row align-items-center justify-content-center">
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell">К</div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell">О</div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell">Ф</div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell">Т</div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell">А</div></div>
+                            </div>
+                            <div class="line_keys gap-2 row align-items-center justify-content-center">
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell"> </div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell"> </div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell"> </div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell"> </div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell"> </div></div>
+                            </div>
+                            <div class="line_keys gap-2 row align-items-center justify-content-center">
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell"> </div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell"> </div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell"> </div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell"> </div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell"> </div></div>
+                            </div>
+                            <div class="line_keys gap-2 row align-items-center justify-content-center">
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell"> </div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell"> </div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell"> </div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell"> </div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell"> </div></div>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <figure class="js-slider_item img-2">
+                    <figcaption class="wo-caption mb-3 mt-3" style="text-align: center;" >
+                        Буквы на игровом поле будут выделены разным цветом
+                    </figcaption>
+                    <div class="js-slider_img">
+                        <div class="d-flex align-items-center justify-content-center flex-column container ms-2 me-2" id="grid">            
+                            <div class="line_keys gap-2 row align-items-center justify-content-center">
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell">К</div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell">О</div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell">Ф</div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell" style="background-color: #588157;">Т</div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell" style="background-color: #f0d283;">А</div></div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-between justify-content-center flex-column container ms-2 me-2" id="grid" style="width: 90%;">
+                            <div class="line_keys gap-2 row align-items-center justify-content-center">
+                                <div class="col-2 d-flex justify-content-left" style="padding: 0;"><div class="button_style keyboard_btn story_cell" style="background-color: #588157;">Т</div></div>
+                                <div class="col d-flex justify-content-left" style="padding: 0;"> Буква угадана верно</div>
+                            </div>
+                            <div class="line_keys gap-2 row align-items-center justify-content-center">
+                                <div class="col-2 d-flex justify-content-left" style="padding: 0;"><div class="button_style keyboard_btn story_cell" style="background-color: #f0d283;">А</div></div>
+                                <div class="col d-flex justify-content-left" style="padding: 0;"> Буква есть в слове, но на другом месте</div>
+                            </div>
+                            <div class="line_keys gap-2 row align-items-center justify-content-center">
+                                <div class="col-2 d-flex justify-content-left" style="padding: 0;"><div class="button_style keyboard_btn story_cell" style="background-color: #aaaaaa;">К</div></div>
+                                <div class="col d-flex justify-content-left" style="padding: 0;"> Буквы нет в загаданном слове</div>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <figure class="js-slider_item img-3">
+                    <figcaption class="wo-caption mb-3 mt-3" style="text-align: center;">
+                        Ввоите слова пока не отгадаете загаданное слово, или пока не закончатся попытки
+                    </figcaption>
+                    <div class="js-slider_img">
+                        <div class="d-flex align-items-center justify-content-center flex-column" id="grid">                
+                            <div class="line_keys gap-2 row align-items-center justify-content-center">
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell">К</div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell">О</div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell">Ф</div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell" style="background-color: #f0d283;">Т</div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell" style="background-color: #588157;">А</div></div>
+                            </div>
+                            <div class="line_keys gap-2 row align-items-center justify-content-center">
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell">Г</div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell" style="background-color: #588157;">Р</div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell" style="background-color: #f0d283;">А</div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell">Н</div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell">Ь</div></div>
+                            </div>
+                            <div class="line_keys gap-2 row align-items-center justify-content-center">
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell" style="background-color: #588157;">Т</div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell" style="background-color: #588157;">Р</div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell" style="background-color: #588157;">А</div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell" style="background-color: #588157;">В</div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell" style="background-color: #588157;">А</div></div>
+                            </div>
+                            <div class="line_keys gap-2 row align-items-center justify-content-center">
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell"> </div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell"> </div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell"> </div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell"> </div></div>
+                                <div class="col d-flex justify-content-center" style="padding: 0;"><div class="button_style keyboard_btn story_cell"> </div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <figcaption class="wo-caption mb-3 mt-3" style="text-align: center;">
+                        <button class="btn button_style" style="width: 100%" onclick="window.location.href = '/'">Главное меню</button>
+                    </figcaption>
+                </figure>
+                <div class="js-slider_nav">
+                    <label class="js-slider_nav_item s-nav-1 prev" for="s-3"></label>
+                    <label class="js-slider_nav_item s-nav-1 next" for="s-2"></label>
+                    <label class="js-slider_nav_item s-nav-2 prev" for="s-1"></label>
+                    <label class="js-slider_nav_item s-nav-2 next" for="s-3"></label>
+                    <label class="js-slider_nav_item s-nav-3 prev" for="s-2"></label>
+                    <label class="js-slider_nav_item s-nav-3 next" for="s-1"></label>
+                </div>
+                <div class="js-slider_indicator mt-5">
+                    <div class="js-slider-indi indi-1"></div>
+                    <div class="js-slider-indi indi-2"></div>
+                    <div class="js-slider-indi indi-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

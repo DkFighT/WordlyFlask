@@ -6,6 +6,9 @@
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+    font-family: "Oswald", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 body{
     position: relative;
@@ -36,6 +39,7 @@ body{
 
 .game_block_size{
     width: var(--main-block-width);
+    overflow: hidden;
 }
 
 .button_style{
@@ -120,6 +124,169 @@ body{
     color: var(--attension-color);
     width: 100%;
 }
+
+
+
+
+
+
+
+
+li {
+    list-style: none;
+  }
+  input[type="radio"] {
+    display: none;
+  }
+  .js-slider {
+    position: relative;
+    width: 90%;
+    height: 60vh;
+    margin: 0 auto;
+  }
+  .js-slider_item {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1rem 2rem;
+    opacity: 0;
+    visibility: hidden;
+    transform-origin: right center;
+    transform: translate3d(0%, 0%, 0) rotateY(30deg) scaleX(0.95);
+    transition: all 1s ease,transform 1s cubic-bezier(0.43, 0.28, 0.51, 1);
+  }
+  #s-1:checked ~ .js-slider .js-slider_item.img-1,
+  #s-2:checked ~ .js-slider .js-slider_item.img-2,
+  #s-3:checked ~ .js-slider .js-slider_item.img-3 {
+    opacity: 1;
+    visibility: visible;
+    transform-origin: left center;
+    transform: translate3d(0, 0, 0) rotateY(0deg) scaleX(1);
+  }
+  .js-slider_img {
+    width: 100%;
+    height: 60%;
+    position: relative;
+    /* overflow: hidden; */
+  }
+  .c-img-w-full {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: auto;
+    transform: translate3d(-50%, -50%, 0);
+  }
+  .c-img-h-full {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: 100%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+  figcaption {
+    display: block;
+  }
+  .view-sm {
+    display: none;
+  }
+  .js-slider_nav {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    transform: translate3d(0, -50%, 0);
+  }
+  .js-slider_nav_item.prev {
+    left: 0;
+  }
+  .js-slider_nav_item.next {
+    right: 0;
+    transform: rotateY(180deg);
+  }
+  .js-slider_nav_item {
+    position: absolute;
+    display: none;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid var(--attension-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  .js-slider_nav_item:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1.7rem;
+    height: 1.7rem;
+    border-radius: 50%;
+    background-color: var(--attension-color);
+    transform: translate3d(-50%, -50%, 0);
+  }
+  .js-slider_nav_item:hover {
+     transform: translate3d(-30%, 0, 0);
+  }
+  .js-slider_nav_item.next:hover {
+     transform: rotateY(180deg) translate3d(-30%, 0, 0) scale(1.1);
+  }
+  .js-slider_nav_item.prev:hover {
+    transform: translate3d(-30%, 0, 0) scale(1.1);
+ }
+  .js-slider_nav_item:hover:before {
+    /* transform: translate3d(0, -50%, 0) rotate(-30deg); */
+  }
+  .js-slider_nav_item:after {
+    content: "<=";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    color: #ffffff;
+    transform: translate3d(-50%, -50%, 0);
+    transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  #s-1:checked ~ .js-slider .js-slider_nav .s-nav-1,
+  #s-2:checked ~ .js-slider .js-slider_nav .s-nav-2,
+  #s-3:checked ~ .js-slider .js-slider_nav .s-nav-3 {
+    display: block;
+  }
+  .js-slider_indicator {
+    position: absolute;
+    left: 0;
+    top: 63%;
+    width: 100%;
+    text-align: center;
+  }
+  .js-slider-indi {
+    position: relative;
+    display: inline-block;
+    padding: .5rem;
+    cursor: pointer;
+  }
+  .js-slider-indi:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: .3rem;
+    height: .3rem;
+    border-radius: 1rem;
+    background: var(--attension-color);
+    transform: translate3d(-50%, -50%, 0);
+  }
+  .js-slider-indi:hover:after {
+    transform: translate3d(-50%, -50%, 0) scale(1.5);
+    transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  #s-1:checked ~ .js-slider .js-slider_indicator .indi-1:after,
+  #s-2:checked ~ .js-slider .js-slider_indicator .indi-2:after,
+  #s-3:checked ~ .js-slider .js-slider_indicator .indi-3:after {
+    transform: translate3d(-50%, -50%, 0) scale(2);
+  }
 
 @media screen and (orientation:portrait) {
     :root {

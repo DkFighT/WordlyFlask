@@ -20,6 +20,13 @@ def game_screen():
     word = get_word()
     return render_template('game.html', secure_word=word)
 
+@app.route('/rules')
+def rules():
+    return render_template('rules.html')
+
+@app.route('/settings')
+def settings():
+    return render_template('settings.html')
 
 def main():
     app.run(debug=True)
